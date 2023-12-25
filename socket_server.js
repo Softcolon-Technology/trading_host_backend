@@ -11,15 +11,14 @@ export const setSocket = async (socketAsServer) => {
   try {
     socketAsServer.on("connection", async (socket) => {
       socket.on("subscribeToServerMarket", async (data) => {
-        const jsonData = JSON.parse(data);
-        if (Array.isArray(jsonData)) {
-          jsonData.forEach((data) => {
-            sendDataToServer("addMarketWatch", { product: data });
+        if (Array.isArray(data)) {
+          data.forEach((i) => {
+            sendDataToServer("addMarketWatch", { product: i });
           });
         }
       });
       socket.on("joinRoom", (data) => {
-        const rooms = JSON.parse(data);
+        const rooms = data;
         if (Array.isArray(rooms)) {
           rooms.forEach((room) => {
             socket.join(room);

@@ -9,7 +9,9 @@ export const setIoObject = async (socketIo) => {
 
 export const setSocket = async (socketAsServer) => {
   try {
+    console.log("dkjbddkjdbd ")
     socketAsServer.on("connection", async (socket) => {
+      console.log("hidddk")
       socket.on("subscribeToServerMarket", async (data) => {
         console.log("sahil")
         if (Array.isArray(data)) {

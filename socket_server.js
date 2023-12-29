@@ -11,6 +11,7 @@ export const setSocket = async (socketAsServer) => {
   try {
     socketAsServer.on("connection", async (socket) => {
       socket.on("subscribeToServerMarket", async (data) => {
+        console.log("sahil")
         if (Array.isArray(data)) {
           data.forEach((i) => {
             sendDataToServer("addMarketWatch", { product: i });
@@ -18,6 +19,7 @@ export const setSocket = async (socketAsServer) => {
         }
       });
       socket.on("joinRoom", (data) => {
+        console.log("patoliya")
         const rooms = data;
         if (Array.isArray(rooms)) {
           rooms.forEach((room) => {
